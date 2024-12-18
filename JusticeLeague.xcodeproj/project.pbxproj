@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1E0D379F2D13583D0064A762 /* Exceptions for "JusticeLeague" folder in "JusticeLeague" target */ = {
+		1E0D38062D135F490064A762 /* Exceptions for "JusticeLeague" folder in "JusticeLeague" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -21,10 +21,15 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1E0D378F2D13583B0064A762 /* JusticeLeague */ = {
+		1E0D37DA2D135D700064A762 /* New Folder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "New Folder";
+			sourceTree = "<group>";
+		};
+		1E0D37FE2D135F490064A762 /* JusticeLeague */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1E0D379F2D13583D0064A762 /* Exceptions for "JusticeLeague" folder in "JusticeLeague" target */,
+				1E0D38062D135F490064A762 /* Exceptions for "JusticeLeague" folder in "JusticeLeague" target */,
 			);
 			path = JusticeLeague;
 			sourceTree = "<group>";
@@ -45,7 +50,8 @@
 		1E0D37842D13583B0064A762 = {
 			isa = PBXGroup;
 			children = (
-				1E0D378F2D13583B0064A762 /* JusticeLeague */,
+				1E0D37FE2D135F490064A762 /* JusticeLeague */,
+				1E0D37DA2D135D700064A762 /* New Folder */,
 				1E0D378E2D13583B0064A762 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +80,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1E0D378F2D13583B0064A762 /* JusticeLeague */,
+				1E0D37DA2D135D700064A762 /* New Folder */,
+				1E0D37FE2D135F490064A762 /* JusticeLeague */,
 			);
 			name = JusticeLeague;
 			packageProductDependencies = (
