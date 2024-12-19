@@ -20,6 +20,8 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        navigationItem.title = superheroe.name
+        
         nameLabel.text = superheroe.name
         avatarImageView.loadFrom(url: superheroe.image.url)
     }

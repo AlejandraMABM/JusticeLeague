@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,16 +20,13 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
         tableView.dataSource = self
         
-        Task {
-            do {
-                
-                list = try await SuperheroeProvider.findSuperheroesBy(name: "Super")
-                tableView.reloadData()
-            } catch {
-                print(error)
-                
-            }
-        }
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        
+        findSuperheroeBy(name: "a")
+        
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +40,16 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let query = searchBar.text {
+            findSuperheroeBy(name: query)
+            
+        } else {
+            findSuperheroeBy(name: "a")
+        }
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailViewController = segue.destination as! DetailViewController
         let indexpath = tableView.indexPathForSelectedRow!
@@ -51,5 +58,18 @@ class MainViewController: UIViewController, UITableViewDataSource {
         tableView.deselectRow(at: indexpath, animated: true)
     }
 
+    func findSuperheroeBy(name:String) {
+        Task {
+            do {
+                
+                list = try await SuperheroeProvider.findSuperheroesBy(name: name)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData() }
+            } catch {
+                print(error)
+                
+            }
+        }
+    }
 }
     
