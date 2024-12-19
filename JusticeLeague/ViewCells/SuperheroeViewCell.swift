@@ -11,6 +11,7 @@ class SuperheroeViewCell: UITableViewCell {
 
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     
     override func awakeFromNib() {
@@ -24,6 +25,10 @@ class SuperheroeViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    func render(superheroe:Superheroe) {
+        nameLabel.text = superheroe.name
+        avatarImageView.loadFrom(url: superheroe.image.url)
+        
+    }
 
 }
