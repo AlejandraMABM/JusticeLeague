@@ -7,31 +7,41 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    var list : [Superheroe] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        tableView.dataSource = self
+        
         Task {
             do {
                 
-            try await findSuperheroesBy(name: "Super")
+                list = try await SuperheroeProvider.findSuperheroesBy(name: "Super")
+                tableView.reloadData()
             } catch {
+                print(error)
                 
             }
         }
     }
 
-    func findSuperheroesBy(name:String) async throws{
-        let url = URL(string: "https://www.superheroapi.com/api.php/4eaf706e383ad5ea66eec65cb22f3df8/search/\(name)")!
-        let(data,response) = try await URLSession.shared.data(from: url)
-        
-        let result = try JSONDecoder().decode(SuperheroeResponse.self, from: data)
-        
-        print(result)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SuperheroeViewCell
+        cell.nameLabel.text = list[indexPath.item].name
+        return cell
     }
     
 
 }
-
+    
