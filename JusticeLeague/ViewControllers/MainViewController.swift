@@ -43,6 +43,13 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailViewController = segue.destination as! DetailViewController
+        let indexpath = tableView.indexPathForSelectedRow!
+        let superheroe = list[indexpath.row]
+        detailViewController.superheroe = superheroe
+        tableView.deselectRow(at: indexpath, animated: true)
+    }
 
 }
     
