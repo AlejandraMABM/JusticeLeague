@@ -26,7 +26,7 @@ class SuperheroeViewCell: UITableViewCell {
     }
     
     func render(superheroe:Superheroe) {
-        nameLabel.text = superheroe.name
+        nameLabel.text = superheroe.biography.realName
         avatarImageView.loadFrom(url: superheroe.image.url)
         
     }
